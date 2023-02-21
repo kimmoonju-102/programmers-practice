@@ -1,19 +1,16 @@
-function solution(n) {
-    var answer = 0;
-    return answer;
+const getFactorial = (i) => {
+    let result = 1;
+    for(let v= 1; v<=i; v++){
+        result *= v;        
+    }
+    return result;
 }
 
 function solution(n) {
-    let ans = 1;
-
-    for(let i = 1; i <= n; i++){
-        ans *= i;
-        
-        if(ans === n){
-            return i;
-        }
-        
-        if(ans > n){
+    
+    for(let i = 1; ; i++){
+        const result = getFactorial(i);
+        if(n < result){
             return i - 1;
         }
     }
