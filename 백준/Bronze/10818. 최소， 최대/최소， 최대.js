@@ -1,24 +1,5 @@
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './example.txt';
-let input = fs.readFileSync(filePath).toString().split('\n');
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n')[1].split(' ').map(Number);
 
-const arrayLength = +input[0];
+const solution = N => console.log(Math.min(...N), Math.max(...N));
 
-const items = input[1].split(' ').map((item) => +item);
-
-solution(arrayLength, items);
-
-function solution(arrayLength, items) {
-    let min = 1000001;
-    let max = -1000001;
-    for (let i = 0; i < arrayLength; ++i) {
-        item = items[i];
-        if (min > item) {
-            min = item;
-        }
-        if (max < item) {
-            max = item;
-        }
-    }
-    console.log(`${min} ${max}`);
-}
+solution(input);
